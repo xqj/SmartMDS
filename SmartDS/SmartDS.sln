@@ -3,8 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{A3FB27EC-28BD-4348-8F88-0B123235A89A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSite", "WebSite", "{3D693883-0A50-41DB-9CA1-85B8CB9F4A53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{ABD6FE60-C47B-4AD0-B7C8-1F3A8A247F24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F77DD4FD-ACB2-4DC5-84A8-3167235B681B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{BDE13F01-CD1D-46F4-8200-75085D46334C}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D693883-0A50-41DB-9CA1-85B8CB9F4A53} = {A3FB27EC-28BD-4348-8F88-0B123235A89A}
 	EndGlobalSection
 EndGlobal

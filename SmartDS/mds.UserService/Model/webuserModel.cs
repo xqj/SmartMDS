@@ -1,7 +1,7 @@
 using System;
 namespace mds.BaseModel
 {
-    public class webuser
+    public class Webuser
     {
         public int UserId { get; set; }
         public string LoginName { get; set; }
@@ -11,5 +11,7 @@ namespace mds.BaseModel
         public string ImgUrl { get; set; }
         public DateTime CreateTime { get; set; }
 
+
+        public bool Sex { get; set; }
     }
 }

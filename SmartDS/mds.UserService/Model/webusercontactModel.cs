@@ -1,7 +1,7 @@
 using System;
 namespace mds.BaseModel
 {
-    public class webusercontact
+    public class WebuserContact
     {
         public int ContactId { get; set; }
         public int UserId { get; set; }

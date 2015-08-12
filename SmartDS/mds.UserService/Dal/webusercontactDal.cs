@@ -10,10 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 namespace mds.Dal
 {
-    internal class webusercontactDal : MysqlDatabaseFactory<webusercontact>
+    internal class webusercontactDal : MysqlDatabaseFactory<WebuserContact>
     {
         private static string _DatabaseName = "socialsite";
-        internal static List<webusercontact> GetUnion(string searchName, DateTime startTime, DateTime endTime, GridPagerParam param, long operationBy, out int total)
+        internal static List<WebuserContact> GetUnion(string searchName, DateTime startTime, DateTime endTime, GridPagerParam param, long operationBy, out int total)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * FROM webusercontact where (webusercontactName like CONCAT('%',?searchName,'%') or (createTime BETWEEN ?startTime and ?endTime)) and createBy=?operationBy");
@@ -28,11 +28,11 @@ namespace mds.Dal
             parameters.Add(new MySqlParameter("?CurrentPage", param.CurrentPage));
 
             parameters.Add(new MySqlParameter("?PageSize", param.PageSize));
-            List<webusercontact> resultList = GetListByReader<webusercontact>(_DatabaseName, parameters, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<webusercontact> result)
+            List<WebuserContact> resultList = GetListByReader<WebuserContact>(_DatabaseName, parameters, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<WebuserContact> result)
             {
                 while (dataReader.Read())
                 {
-                    var temp = new webusercontact()
+                    var temp = new WebuserContact()
                     {
                         ContactId = dataReader.GetInt32("ContactId"),
                         UserId = dataReader.GetInt32("UserId"),
@@ -44,7 +44,7 @@ namespace mds.Dal
                 }
             }); return resultList;
         }
-        internal static List<webusercontact> GetJoin(string searchName, DateTime startTime, DateTime endTime, GridPagerParam param, long operationBy, out int total)
+        internal static List<WebuserContact> GetJoin(string searchName, DateTime startTime, DateTime endTime, GridPagerParam param, long operationBy, out int total)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * FROM webusercontact where webusercontactName like CONCAT('%',?searchName,'%') and (createTime BETWEEN ?startTime AND ?endTime) and createBy=?operationBy");
@@ -59,11 +59,11 @@ namespace mds.Dal
             parameters.Add(new MySqlParameter("?operationBy", operationBy));
             parameters.Add(new MySqlParameter("?CurrentPage", param.CurrentPage));
             parameters.Add(new MySqlParameter("?PageSize", param.PageSize));
-            List<webusercontact> resultList = GetListByReader<webusercontact>(_DatabaseName, parameters, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<webusercontact> result)
+            List<WebuserContact> resultList = GetListByReader<WebuserContact>(_DatabaseName, parameters, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<WebuserContact> result)
             {
                 while (dataReader.Read())
                 {
-                    var temp = new webusercontact()
+                    var temp = new WebuserContact()
                     {
                         ContactId = dataReader.GetInt32("ContactId"),
                         UserId = dataReader.GetInt32("UserId"),
@@ -75,14 +75,14 @@ namespace mds.Dal
                 }
             }); return resultList;
         }
-        internal static webusercontact GetDetail(int operationBy, int id)
+        internal static WebuserContact GetDetail(int operationBy, int id)
         {
             List<MySqlParameter> parameters = new List<MySqlParameter>();
             parameters.Add(new MySqlParameter("?operationBy", operationBy));
             parameters.Add(new MySqlParameter("?id", id));
-            webusercontact result = GetDataByReader<webusercontact>(_DatabaseName, parameters, "select * from webusercontact where id=?id;", CommandType.Text, delegate(MySqlDataReader dataReader) { if (dataReader.Read()) { var r = new webusercontact(); r.ContactId = dataReader.GetInt32("ContactId"); r.UserId = dataReader.GetInt32("UserId"); r.HomeAddress = dataReader["HomeAddress"].ToString(); r.Mobile = dataReader["Mobile"].ToString(); r.Email = dataReader["Email"].ToString(); r.CreateTime = dataReader.GetDateTime("CreateTime"); return r; } else                    return null; }); return result;
+            WebuserContact result = GetDataByReader<WebuserContact>(_DatabaseName, parameters, "select * from webusercontact where id=?id;", CommandType.Text, delegate(MySqlDataReader dataReader) { if (dataReader.Read()) { var r = new WebuserContact(); r.ContactId = dataReader.GetInt32("ContactId"); r.UserId = dataReader.GetInt32("UserId"); r.HomeAddress = dataReader["HomeAddress"].ToString(); r.Mobile = dataReader["Mobile"].ToString(); r.Email = dataReader["Email"].ToString(); r.CreateTime = dataReader.GetDateTime("CreateTime"); return r; } else                    return null; }); return result;
         }
-        internal static int Create(webusercontact model)
+        internal static int Create(WebuserContact model)
         {
             List<MySqlParameter> parameters = new List<MySqlParameter>();
             parameters.Add(new MySqlParameter("?ContactId", model.ContactId));
@@ -92,9 +92,9 @@ namespace mds.Dal
             parameters.Add(new MySqlParameter("?Email", model.Email));
             parameters.Add(new MySqlParameter("?CreateTime", model.CreateTime));
 
-            ; return DatabaseFactory.GetPrimarykey(_DatabaseName, parameters.ToArray(), "insert into webusercontact(ContactId,UserId,HomeAddress,Mobile,Email,CreateTime)  values (?ContactId,?UserId,?HomeAddress,?Mobile,?Email,?CreateTime);SELECT  @@IDENTITY as id", CommandType.Text);
+            ; return GetPrimarykey(_DatabaseName, parameters.ToArray(), "insert into webusercontact(ContactId,UserId,HomeAddress,Mobile,Email,CreateTime)  values (?ContactId,?UserId,?HomeAddress,?Mobile,?Email,?CreateTime);SELECT  @@IDENTITY as id", CommandType.Text);
         }
-        internal static bool Modify(webusercontact model)
+        internal static bool Modify(WebuserContact model)
         {
             List<MySqlParameter> parameters = new List<MySqlParameter>();
             parameters.Add(new MySqlParameter("?ContactId", model.ContactId));
@@ -104,7 +104,7 @@ namespace mds.Dal
             parameters.Add(new MySqlParameter("?Email", model.Email));
             parameters.Add(new MySqlParameter("?CreateTime", model.CreateTime));
 
-            return DatabaseFactory.ExecuteNonQuery(_DatabaseName, parameters, "update webusercontact set ContactId=?ContactId,UserId=?UserId,HomeAddress=?HomeAddress,Mobile=?Mobile,Email=?Email,CreateTime=?CreateTime where userID=?userID;", CommandType.Text) > 0 ? true : false;
+            return ExecuteNonQuery(_DatabaseName, parameters, "update webusercontact set ContactId=?ContactId,UserId=?UserId,HomeAddress=?HomeAddress,Mobile=?Mobile,Email=?Email,CreateTime=?CreateTime where userID=?userID;", CommandType.Text) > 0 ? true : false;
         }
     }
 }

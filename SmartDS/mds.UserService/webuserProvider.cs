@@ -10,12 +10,12 @@ namespace Cat.BussinessService
 {
     public class WebUserProvider
     {
-        public GridPager<webuser> GetPagerList(string searchName, DateTime? startTime, DateTime? endTime, GridPagerParam param, long operationBy, bool isUnion = false)
+        public GridPager<Webuser> GetPagerList(string searchName, DateTime? startTime, DateTime? endTime, GridPagerParam param, long operationBy, bool isUnion = false)
         {
             ArgumentHelper.AssertInRange("operationBy", (int)operationBy, 1, int.MaxValue);
             startTime = startTime.HasValue ? startTime.Value : DateTime.Now.AddDays(-1.0);
             endTime = endTime.HasValue ? endTime.Value : DateTime.Now.AddDays(1.0);
-            var r = new GridPager<webuser>(false);
+            var r = new GridPager<Webuser>(false);
             int total = 0;
             if (isUnion)
             {
@@ -28,23 +28,23 @@ namespace Cat.BussinessService
                 r.ActionResult = (r.Data != null) ? true : false;
             } return r;
         }
-        public OperationResult<webuser> GetDetail(int operationBy, int webuserId)
+        public OperationResult<Webuser> GetDetail(int operationBy, int webuserId)
         {
             ArgumentHelper.AssertInRange("operationBy", (int)operationBy, 1, int.MaxValue);
             // ArgumentHelper.AssertInRange("webuserId", webuserId, 1, int.MaxValue);
-            var r = new OperationResult<webuser>();
+            var r = new OperationResult<Webuser>();
             r.Data = webuserDal.GetDetail(operationBy, webuserId);
             r.ActionResult = (r.Data != null) ? true : false;
             return r;
         }
-        public OperationResult<int> Create(webuser info)
+        public OperationResult<int> Create(Webuser info)
         {           // ArgumentHelper.AssertNotNullOrEmpty(info.webuserName);
             var r = new OperationResult<int>();
             r.Data = webuserDal.Create(info);
             r.ActionResult = (r.Data > 0) ? true : false;
             return r;
         }
-        public ActionMsg Modify(webuser info)
+        public ActionMsg Modify(Webuser info)
         {           // ArgumentHelper.AssertNotNullOrEmpty(info.infoName);
             var r = new ActionMsg();
             r.ActionResult = webuserDal.Modify(info);

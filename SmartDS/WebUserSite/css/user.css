@@ -20,7 +20,7 @@
     height: 80px;
     width: 100%;
     margin: 0px;
-   
+   border-bottom:groove;
 }
 
 
@@ -32,7 +32,12 @@
     height: 100%;
     _height: 700px;
 }
-
+.centerContainer{
+    background-color:#b6ff00;
+      width: 400px;
+      margin: auto;
+      height:400px;
+}
 
 
 .footer {

@@ -42,11 +42,11 @@
     height: 100%;
     _height: 700px;
 }
-.centerContainer{
-    background-color:#b6ff00;
-      width: 400px;
-      margin: auto;
+.centerContainer{   
+      width: 400px;     
       height:400px;
+       margin-left:35%;
+      padding-top:200px;
 }
 
 

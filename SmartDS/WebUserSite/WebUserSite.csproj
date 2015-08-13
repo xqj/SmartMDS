@@ -62,7 +62,7 @@
     <Content Include="css\me.css" />
     <Content Include="css\user.css" />
     <Content Include="css\mananger.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="img\head.jpg" />
     <Content Include="js\lib\jquery-1.8.2.js" />
     <Content Include="js\lib\jquery-1.8.2.min.js" />
@@ -170,15 +170,17 @@
     <Content Include="Reg.aspx" />
     <Content Include="ResumeDetail.aspx" />
     <Content Include="Resumes.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -237,6 +239,7 @@
     <Content Include="js\plus\pickadate\themes-source\default.time.less" />
     <Content Include="js\plus\pickadate\themes-source\rtl.less" />
     <Content Include="js\plus\pickadate\themes-source\_variables.less" />
+    <None Include="Properties\PublishProfiles\lsite.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -12,35 +12,35 @@
         <ul class="resumeul">
             <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
             
         </ul>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebUserSite.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WebUserSite.Default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/default.css" rel="stylesheet" />
 </asp:Content>
@@ -7,35 +7,35 @@
         <ul class="resumeul">
             <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
-                <p><a href="javacript:void(0);">姓名 </a></p>
+                <p><a href="ResumeDetail.aspx">姓名 </a></p>
             </li>
             
         </ul>

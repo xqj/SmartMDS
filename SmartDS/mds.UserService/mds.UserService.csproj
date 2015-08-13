@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,15 +55,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mds.BaseModel\mds.BaseModel.csproj">
-      <Project>{aa342e10-06da-445f-be84-efa750906fd7}</Project>
+      <Project>{AA342E10-06DA-445F-BE84-EFA750906FD7}</Project>
       <Name>mds.BaseModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\mds.DataAccess\mds.DataAccess.csproj">
-      <Project>{5ba92e05-8ff4-46b3-a6c3-72ab730ab6f9}</Project>
+      <Project>{5BA92E05-8FF4-46B3-A6C3-72AB730AB6F9}</Project>
       <Name>mds.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\mds.Util\mds.Util.csproj">
-      <Project>{6fbd9eac-7d18-496f-8412-aa46f836907d}</Project>
+      <Project>{6FBD9EAC-7D18-496F-8412-AA46F836907D}</Project>
       <Name>mds.Util</Name>
     </ProjectReference>
   </ItemGroup>

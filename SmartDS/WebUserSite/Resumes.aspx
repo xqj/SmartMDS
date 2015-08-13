@@ -1,7 +1,50 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User.Master" AutoEventWireup="true" CodeBehind="Resumes.aspx.cs" Inherits="WebUserSite.Resumes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="css/default.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="badyContent" runat="server">
+    <div class="searchContainer">
+        <div class="search">
+            <input type="text" id="searchText" name="seracheText" value="搜索简历" class="searchText" /><span><a href="javascript:void(0);">搜索</a></span>
+        </div>
+    </div>
+    <div id="resumeList">
+        <ul class="resumeul">
+            <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+             <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+             <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+             <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+             <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+             <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+             <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+             <li>
+                <img src="img/head.jpg" class="resumeHeadImg" />
+                <p><a href="javacript:void(0);">姓名 </a></p>
+            </li>
+            
+        </ul>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="dialogContent" runat="server">
 </asp:Content>

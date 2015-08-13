@@ -16,7 +16,7 @@
         <div class="container">
             <div class="header">
                 <ul class="headermenu">
-                    <li><a href="Default.aspx" target="_self">首页</a></li>
+                    <li><a href="index.aspx" target="_self">首页</a></li>
                     <li><a href="Resumes.aspx" target="_self">简历</a></li>
                      <li><a href="Me.aspx" target="_self">ME</a></li>
                     <li><a href="Login.aspx" target="_self">登陆</a></li>

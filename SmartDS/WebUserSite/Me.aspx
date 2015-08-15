@@ -13,6 +13,9 @@
       <div class="textdiv">最高学历：<input id="LastEdu" name="LastEdu" type="text"  value=""/></div>
       <div class="textdiv">手机号：<input id="Mobile" name="Mobile" type="text"  value=""/></div>
       <div class="textdiv">专业：<input id="Profesnal" name="Profesnal" type="text"  value=""/></div>
+      <div class="textdiv">交流时间：<select>
+                                <option>时区选择</option>
+                                </select>起止时间<input id="start" name="start" type="datetime" value=""/>---<input id="end" name="end" type="datetime" value=""/></div>
      <div class="textdiv"><input id=""  type="button"  value="提交"/></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="dialogContent" runat="server">

@@ -8,34 +8,42 @@
             <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                 <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                  <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                  <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                  <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                  <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                  <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                  <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
              <li>
                 <img src="img/head.jpg" class="resumeHeadImg" />
                 <p><a href="ResumeDetail.aspx">姓名 </a></p>
+                  <p>交流时间:东八区--8:00 至 21:00</p>
             </li>
             
         </ul>

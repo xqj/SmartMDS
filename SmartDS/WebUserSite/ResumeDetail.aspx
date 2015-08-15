@@ -13,6 +13,7 @@
       <div class="textdiv">最高学历：<span id="LastEdu">学士</span></div>
       <div class="textdiv">手机号：<span id="Mobile" >13xxxxxxx</span></div>
       <div class="textdiv">专业：<span id="Profesnal" >xxxxx专业</span></div>
+     <div>交流时间:东八区--8:00 至 21:00</div>
      <div class="textdiv"><input id="btn"  type="button"  value="下载"/></div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="dialogContent" runat="server">

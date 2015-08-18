@@ -10,6 +10,7 @@ namespace Cat.BussinessService
 {
     public class ContractProvider
     {
+        private static ContractProvider _instance = new ContractProvider();
         public GridPager<WebuserContact> GetPagerList(string searchName, DateTime? startTime, DateTime? endTime, GridPagerParam param, long operationBy, bool isUnion = false)
         {
             ArgumentHelper.AssertInRange("operationBy", (int)operationBy, 1, int.MaxValue);

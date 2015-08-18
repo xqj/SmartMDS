@@ -8,32 +8,38 @@ using System.Linq;
 using System.Text;
 namespace Cat.BussinessService
 {
-    public class WebUserProvider
+    public class WebUserProvider : mds.UserService.IWebUserProvider
     {
-        public GridPager<Webuser> GetPagerList(string searchName, DateTime? startTime, DateTime? endTime, GridPagerParam param, long operationBy, bool isUnion = false)
+        private static WebUserProvider _instance = new WebUserProvider();
+
+        public static WebUserProvider Instance
         {
-            ArgumentHelper.AssertInRange("operationBy", (int)operationBy, 1, int.MaxValue);
-            startTime = startTime.HasValue ? startTime.Value : DateTime.Now.AddDays(-1.0);
-            endTime = endTime.HasValue ? endTime.Value : DateTime.Now.AddDays(1.0);
-            var r = new GridPager<Webuser>(false);
-            int total = 0;
-            if (isUnion)
-            {
-                r.Data = webuserDal.GetUnion(searchName, startTime.Value, endTime.Value, param, operationBy, out total);
-                r.ActionResult = (r.Data != null) ? true : false;
-            }
-            else
-            {
-                r.Data = webuserDal.GetJoin(searchName, startTime.Value, endTime.Value, param, operationBy, out total);
-                r.ActionResult = (r.Data != null) ? true : false;
-            } return r;
+            get { return WebUserProvider._instance; }
+            
         }
-        public OperationResult<Webuser> GetDetail(int operationBy, int webuserId)
+        public GridPager<Webuser> GetPagerList(GridPagerParam param)
         {
-            ArgumentHelper.AssertInRange("operationBy", (int)operationBy, 1, int.MaxValue);
+             var r = new GridPager<Webuser>(false);
+
+             r.Data = webuserDal.GetPagerList(param);
+                r.ActionResult = (r.Data != null) ? true : false;
+            
+                return r;
+        }
+        public GridPager<Webuser> GetPagerList(GridPagerParam param,List<int> searchIds)
+        {
+            var r = new GridPager<Webuser>(false);
+
+            r.Data = webuserDal.GetPagerList(param, searchIds);
+            r.ActionResult = (r.Data != null) ? true : false;
+
+            return r;
+        }
+        public OperationResult<Webuser> GetDetail(int webuserId)
+        {
             // ArgumentHelper.AssertInRange("webuserId", webuserId, 1, int.MaxValue);
             var r = new OperationResult<Webuser>();
-            r.Data = webuserDal.GetDetail(operationBy, webuserId);
+            r.Data = webuserDal.GetDetail(webuserId);
             r.ActionResult = (r.Data != null) ? true : false;
             return r;
         }

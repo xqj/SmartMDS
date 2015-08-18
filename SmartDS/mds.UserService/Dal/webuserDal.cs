@@ -13,75 +13,54 @@ namespace mds.Dal
     internal class webuserDal : MysqlDatabaseFactory<Webuser>
     {
         private static string _DatabaseName = "socialsite";
-        internal static List<Webuser> GetUnion(string searchName, DateTime startTime, DateTime endTime, GridPagerParam param, long operationBy, out int total)
+        internal static List<Webuser> GetPagerList(GridPagerParam param)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * FROM webuser where (webuserName like CONCAT('%',?searchName,'%') or (createTime BETWEEN ?startTime and ?endTime)) and createBy=?operationBy");
-            strSql.Append(" order by createTime desc");
+            strSql.Append("select UserId,UserName FROM webuser");
+            strSql.Append(" order by CreateTime desc");
             strSql.Append(" limit ");
-            strSql.Append(((param.CurrentPage - 1) * param.PageSize).ToString() + "," + param.PageSize.ToString());
-            total = 0;
-            var parameters = new List<MySqlParameter>();
-            parameters.Add(new MySqlParameter("?searchName", searchName));
-            parameters.Add(new MySqlParameter("?startTime", startTime)); parameters.Add(new MySqlParameter("?endTime", endTime)); parameters.Add(new MySqlParameter("?operationBy", operationBy));
-
-            parameters.Add(new MySqlParameter("?CurrentPage", param.CurrentPage));
-
-            parameters.Add(new MySqlParameter("?PageSize", param.PageSize));
-            List<Webuser> resultList = GetListByReader<Webuser>(_DatabaseName, parameters, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<Webuser> result)
+            strSql.Append(((param.CurrentPage - 1) * param.PageSize).ToString() + "," + param.PageSize.ToString());            
+            List<Webuser> resultList = GetListByReader<Webuser>(_DatabaseName, null, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<Webuser> result)
             {
                 while (dataReader.Read())
                 {
                     var temp = new Webuser()
                     {
                         UserId = dataReader.GetInt32("UserId"),
-                        LoginName = dataReader["LoginName"].ToString(),
-                        Mobile = dataReader["Mobile"].ToString(),
-                        IDCard = dataReader["IDCard"].ToString(),
-                        Nationality = dataReader["Nationality"].ToString(),
-                        ImgUrl = dataReader["ImgUrl"].ToString(),
-                        CreateTime = dataReader.GetDateTime("CreateTime"),
-                    }; result.Add(temp);
+                        UserName = dataReader["UserName"].ToString()                      
+                    }; 
+                    result.Add(temp);
                 }
-            }); return resultList;
+            }); 
+            return resultList;
         }
-        internal static List<Webuser> GetJoin(string searchName, DateTime startTime, DateTime endTime, GridPagerParam param, long operationBy, out int total)
+        internal static List<Webuser> GetPagerList(GridPagerParam param,List<int> userIds)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select * FROM webuser where webuserName like CONCAT('%',?searchName,'%') and (createTime BETWEEN ?startTime AND ?endTime) and createBy=?operationBy");
-            strSql.Append(" order by createTime desc");
+            strSql.Append("select UserId,UserName FROM webuser where UserId in ги");
+            strSql.Append(string.Join(",",userIds));
+            strSql.Append(")");
+            strSql.Append(" order by CreateTime desc");
             strSql.Append(" limit ");
             strSql.Append(((param.CurrentPage - 1) * param.PageSize).ToString() + "," + param.PageSize.ToString());
-            total = 0;
-            var parameters = new List<MySqlParameter>();
-            parameters.Add(new MySqlParameter("?searchName", searchName));
-            parameters.Add(new MySqlParameter("?startTime", startTime));
-            parameters.Add(new MySqlParameter("?endTime", endTime));
-            parameters.Add(new MySqlParameter("?operationBy", operationBy));
-            parameters.Add(new MySqlParameter("?CurrentPage", param.CurrentPage));
-            parameters.Add(new MySqlParameter("?PageSize", param.PageSize));
-            List<Webuser> resultList = GetListByReader<Webuser>(_DatabaseName, parameters, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<Webuser> result)
+            List<Webuser> resultList = GetListByReader<Webuser>(_DatabaseName, null, strSql.ToString(), CommandType.Text, delegate(MySqlDataReader dataReader, List<Webuser> result)
             {
                 while (dataReader.Read())
                 {
                     var temp = new Webuser()
                     {
                         UserId = dataReader.GetInt32("UserId"),
-                        LoginName = dataReader["LoginName"].ToString(),
-                        Mobile = dataReader["Mobile"].ToString(),
-                        IDCard = dataReader["IDCard"].ToString(),
-                        Nationality = dataReader["Nationality"].ToString(),
-                        ImgUrl = dataReader["ImgUrl"].ToString(),
-                        CreateTime = dataReader.GetDateTime("CreateTime"),
-                    }; result.Add(temp);
+                        UserName = dataReader["UserName"].ToString()   
+                    };
+                    result.Add(temp);
                 }
-            }); return resultList;
+            });
+            return resultList;
         }
-        internal static Webuser GetDetail(int operationBy, int id)
+        internal static Webuser GetDetail(int id)
         {
             List<MySqlParameter> parameters = new List<MySqlParameter>();
-            parameters.Add(new MySqlParameter("?operationBy", operationBy));
-            parameters.Add(new MySqlParameter("?id", id));
+             parameters.Add(new MySqlParameter("?id", id));
             Webuser result = GetDataByReader<Webuser>(_DatabaseName, parameters, "select * from webuser where id=?id;", CommandType.Text, delegate(MySqlDataReader dataReader) { if (dataReader.Read()) { var r = new Webuser(); r.UserId = dataReader.GetInt32("UserId"); r.LoginName = dataReader["LoginName"].ToString(); r.Mobile = dataReader["Mobile"].ToString(); r.IDCard = dataReader["IDCard"].ToString(); r.Nationality = dataReader["Nationality"].ToString(); r.ImgUrl = dataReader["ImgUrl"].ToString(); r.CreateTime = dataReader.GetDateTime("CreateTime"); return r; } else                    return null; }); return result;
         }
         internal static int Create(Webuser model)

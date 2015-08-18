@@ -6,13 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-namespace Cat.BussinessService
+namespace mds.UserService
 {
     public class WebUserProvider : mds.UserService.IWebUserProvider
     {
         private static WebUserProvider _instance = new WebUserProvider();
 
-        public static WebUserProvider Instance
+        public static IWebUserProvider Instance
         {
             get { return WebUserProvider._instance; }
             

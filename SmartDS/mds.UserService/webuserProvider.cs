@@ -56,6 +56,24 @@ namespace mds.UserService
             r.ActionResult = webuserDal.Modify(info);
             return r;
         }
-        
+
+
+        public OperationResult<int> Reg(string loginName, string pwd, string email, string verfiycode)
+        {
+            ArgumentHelper.AssertNotNullOrEmpty(loginName, pwd, email);
+            var r = new OperationResult<int>();
+            r.Data = webuserDal.Reg(loginName, pwd, email);
+            r.ActionResult = (r.Data > 0) ? true : false;
+            return r;
+        }
+
+        public OperationResult<Webuser> Login(string loginName, string pwd)
+        {
+            ArgumentHelper.AssertNotNullOrEmpty(loginName, pwd);
+            var r = new OperationResult<Webuser>();
+            r.Data = webuserDal.Login(loginName, pwd);
+            r.ActionResult = (r.Data!=null) ? true : false;
+            return r;
+        }
     }
 }

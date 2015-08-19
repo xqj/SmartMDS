@@ -50,6 +50,7 @@
             <script src="js/lib/jquery-1.8.2.min.js"></script>
             <script src="js/lib/jquery.validate.min.js"></script>
             <script src="js/lib/knockout-2.2.0.js"></script>
+            <script src="js/pageJs.js"></script>
             <asp:ContentPlaceHolder ID="jsContent" runat="server">
             </asp:ContentPlaceHolder>
             <asp:ContentPlaceHolder ID="jsPlus" runat="server">

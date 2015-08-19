@@ -3,6 +3,8 @@ namespace mds.UserService
 {
   public  interface IWebUserProvider
     {
+      mds.BaseModel.OperationResult<int> Reg(string loginName,string pwd,string email,string verfiycode);
+      mds.BaseModel.OperationResult<mds.BaseModel.Webuser> Login(string loginName, string pwd);
         mds.BaseModel.OperationResult<int> Create(mds.BaseModel.Webuser info);
         mds.BaseModel.OperationResult<mds.BaseModel.Webuser> GetDetail(int webuserId);
         mds.BaseModel.GridPager<mds.BaseModel.Webuser> GetPagerList(mds.BaseModel.GridPagerParam param);

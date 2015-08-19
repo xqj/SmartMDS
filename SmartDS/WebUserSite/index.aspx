@@ -41,10 +41,12 @@
                 $("#regDisBtn").on("click", function () {
                     $("#lg").hide();
                     $("#rg").show();
+                    pageObject.vaild.resetForm();
                 });
                 $("#loginDisBtn").on("click", function () {
                     $("#rg").hide();
                     $("#lg").show();
+                    pageObject.vaild.resetForm();
                 });
             },
             initCheck: function () {

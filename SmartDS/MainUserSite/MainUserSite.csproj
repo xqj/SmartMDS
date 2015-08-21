@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ChangePwd.aspx" />
     <Content Include="css\default.css" />
     <Content Include="css\mananger.css" />
     <Content Include="css\me.css" />
@@ -184,6 +185,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangePwd.aspx.cs">
+      <DependentUpon>ChangePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePwd.aspx.designer.cs">
+      <DependentUpon>ChangePwd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Frame.Master.cs">
       <DependentUpon>Frame.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -16,6 +16,7 @@
         <div class="container">
             <div class="header">
                 <ul class="headermenu">
+                      <li class="headermenuright"><a href="javascript:void(0)" target="_self">技术测试</a></li>
                     <li class="headermenuright"><a href="index.aspx" target="_self">首页</a></li>
                     <li class="headermenuright"><a href="Resumes.aspx" target="_self">简历</a></li>
                     <li class=""><a href="Me.aspx" target="_self">ME</a></li>

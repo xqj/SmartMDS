@@ -53,7 +53,7 @@ namespace MainUserSite
             return _instance.ChangePwd(userId, oldPwd, newPwd);
         }
         [WebMethod(EnableSession = true)]
-        public ActionMsg ModifyUser(int userId, string loginName, string email, string userName, string imgUrl, string mobile, string IDCard, string nationality, bool sex)
+          public ActionMsg ModifyUser(int userId, string loginName, string email, string userName, string imgUrl, string mobile, string IDcard, string nationality, bool sex)
         {
             var r = new ActionMsg(false, "操作失败");
             if (Session["UserSession"] == null) return r;
@@ -62,7 +62,7 @@ namespace MainUserSite
                 UserName = userName,
                 ImgUrl = imgUrl,
                 Mobile = mobile,
-                IDCard = IDCard,
+                IDCard = IDcard,
                 Nationality = nationality,
                 LoginName = loginName,
                 UserId = userId,

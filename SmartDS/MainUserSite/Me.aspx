@@ -23,6 +23,7 @@
     </div>
     <div class="textdiv">
         <input id="modifyBtn" name="modifyBtn" type="button" value="提交" /><a href="ChangePwd.aspx" target="_self">更改密码</a></div>
+    <div id="errMsg" class="textdiv"></div>
     <div id="msg" class="textdiv"></div>
     <%}
       else
@@ -40,13 +41,82 @@
             paramter:null,
             initPageObject: function () {
                 this.modifyBtn.one("click", this.modify);
+                this.checkVal();
+            },
+            checkVal: function () {
+                $("#form1").validate({                   
+                    rules: {
+                        UserName: {
+                            required: true,
+                            minlength: 2,
+                            maxlength: 100,
+                        },
+                        Mobile: {
+                            required: true,
+                            minlength: 11,
+                            maxlength: 15
+                        },
+                        IDcard: {
+                            required: true,
+                            minlength: 18,
+                            maxlength: 20,
+                        },
+                        Nationality: {
+                            required: true,
+                            minlength: 2,
+                            maxlength: 100,
+                        },
+                        LoginName: {
+                            required: true,
+                            minlength: 2,
+                            maxlength: 20,
+                        },
+                        Email: {
+                            required: true,
+                            email: true,
+                            maxlength: 20
+                        }
+                    },
+                    messages: {
+                        UserName: {
+                            required: "此处必填",
+                            minlength: "至少2个字符",
+                            maxlength: "最多100个字符",
+                        },
+                        Mobile: {
+                            required: "此处必填",
+                            minlength: "至少11个字符",
+                            maxlength: "最多15个字符",
+                        },
+                        IDcard: {
+                            required: "此处必填",
+                            minlength: "至少18个字符",
+                            maxlength: "最多20个字符",
+                        },
+                        Nationality: {
+                            required: "此处必填",
+                            minlength: "至少18个字符",
+                            maxlength: "最多20个字符",
+                        },
+                        LoginName: {
+                            required: "此处必填",
+                            minlength: "至少2个字符",
+                            maxlength: "最多20个字符",
+                        },
+                        Email: {
+                            required: "此处必填",
+                            email: "邮箱格式不正确",
+                            maxlength: "最多20个字符",
+                        }
+                    }
+                });
             },
             initParamter: function () {
                 pageObject.paramter = {
                     userName: $("#UserName").val(),
                     imgUrl: $("#ImgUrl").val(),
                     mobile: $("#Mobile").val(),
-                    IDCard: $("#IDCard").val(),
+                    IDcard: $("#IDcard").val(),
                     nationality: $("#Nationality").val(),
                     loginName: $("#LoginName").val(),
                     userId: $("#UserId").val(),
@@ -56,9 +126,12 @@
                 };
             },
             modify: function () {
+                if (!$("#form1").valid()) {
+                    return;
+                }
                 pageObject.initParamter();
                 pageJs.loadAjaxFun(pageObject.modifyUrl, pageObject.paramter, function (data) {
-                    $("#msg").html(data.Msg);
+                    $("#msg").html(data.Message);
                     pageObject.modifyBtn.one("click", pageObject.modify);
                 }, function () {
                     pageObject.modifyBtn.one("click", pageObject.modify);

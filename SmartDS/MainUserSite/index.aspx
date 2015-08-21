@@ -20,6 +20,7 @@
                 <a id="loginDisBtn" href="javascript:void(0)" class="loginBtn disBtn">登陆</a>
             </div>
         <div id="errMsg"></div>
+        <div id="msg"></div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="dialogContent" runat="server">
@@ -64,7 +65,7 @@
                     if (data.ActionResult) {
                         window.location = 'Resumes.aspx';
                     } else {
-                        $("#errMsg").html(data.Msg);
+                        $("#msg").html(data.Message);
                     }
                 }, function () {
 
@@ -105,7 +106,7 @@
                     if (data.ActionResult) {
                         window.location = 'Resumes.aspx';
                     } else {
-                        $("#errMsg").html(data.Msg);
+                        $("#msg").html(data.Message);
                     }
                 }, function () { });
             },

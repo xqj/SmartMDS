@@ -72,6 +72,7 @@ namespace mds.Dal
                     r.LoginName = dataReader["LoginName"].ToString();
                     r.UserName = dataReader["UserName"].ToString();
                     r.Mobile = dataReader["Mobile"].ToString();
+                    r.Email = dataReader["Email"].ToString();
                     r.IDCard = dataReader["IDCard"].ToString();
                     r.Nationality = dataReader["Nationality"].ToString();
                     r.ImgUrl = dataReader["ImgUrl"].ToString();

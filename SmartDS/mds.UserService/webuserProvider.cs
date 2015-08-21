@@ -83,6 +83,7 @@ namespace mds.UserService
             var r = new OperationResult<mds.BaseModel.Webuser>();
             r.Data = webuserDal.Reg(loginName, pwd, email);
             r.ActionResult = (r.Data!=null) ? true : false;
+            if (r.ActionResult) r.Message = "ÐÞ¸Ä³É¹¦";
             return r;
         }
 

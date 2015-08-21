@@ -7,10 +7,10 @@
     <%if (_user != null)
       { %>
     
-       
-    <div class="textdiv">旧密码：<input id="oldPwd" name="oldPwd" type="text" value="" />
+       <div class="textdiv"></div>
+    <div class="textdiv">旧密码：<input id="oldPwd" name="oldPwd" type="password" value="" />
         <input type="hidden" id="UserId" name="UserId" value="<%=_user.UserId %>" /></div>
-    <div class="textdiv">新密码：<input id="newPwd" name="newPwd" type="text" value="" /></div>
+    <div class="textdiv">新密码：<input id="newPwd" name="newPwd" type="password" value="" /></div>
     
     <div class="textdiv">
         <input id="modifyBtn" name="modifyBtn" type="button" value="提交" /></div>
@@ -31,6 +31,10 @@
             paramter: null,
             initPageObject: function () {
                 this.modifyBtn.one("click", this.modify);
+                this.checkVal();
+            },
+            checkVal: function () {
+
             },
             initParamter: function () {
                 pageObject.paramter = {                   
@@ -40,9 +44,12 @@
                 };
             },
             modify: function () {
+                if (!$("#form1").valid()) {
+                    return;
+                }
                 pageObject.initParamter();
                 pageJs.loadAjaxFun(pageObject.modifyUrl, pageObject.paramter, function (data) {
-                    $("#msg").html(data.Msg);
+                    $("#msg").html(data.Message);
                     pageObject.modifyBtn.one("click", pageObject.modify);
                 }, function () {
                     pageObject.modifyBtn.one("click", pageObject.modify);

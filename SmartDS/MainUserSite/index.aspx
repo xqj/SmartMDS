@@ -145,7 +145,10 @@
             }
 
         };
-        pageObject.initPageObject();
+        $.ready(function () {
+            pageObject.initPageObject();
+        });
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="jsPlus" runat="server">

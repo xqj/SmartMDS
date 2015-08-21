@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WebUserSite {
+namespace MainUserSite {
     
     
     public partial class ResumeDetail {

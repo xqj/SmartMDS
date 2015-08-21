@@ -20,6 +20,10 @@ namespace mds.UserService
         {
             _searchInstance.CreateIndex(webuserDal.GetListForSearch());
         }
+        public static void ClearIndex()
+        {
+            _searchInstance.ClearIndex();
+        }
         public GridPager<Webuser> GetPagerList(GridPagerParam param)
         {
              var r = new GridPager<Webuser>(false);

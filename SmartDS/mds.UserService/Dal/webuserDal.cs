@@ -16,7 +16,7 @@ namespace mds.Dal
         internal static List<Webuser> GetPagerList(GridPagerParam param)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select UserId,UserName FROM webuser");
+            strSql.Append("select UserId,UserName,ImgUrl FROM webuser");
             strSql.Append(" order by CreateTime desc");
             strSql.Append(" limit ");
             strSql.Append(((param.CurrentPage - 1) * param.PageSize).ToString() + "," + param.PageSize.ToString());
@@ -27,7 +27,8 @@ namespace mds.Dal
                     var temp = new Webuser()
                     {
                         UserId = dataReader.GetInt32("UserId"),
-                        UserName = dataReader["UserName"].ToString()
+                        UserName = dataReader["UserName"].ToString(),
+                        ImgUrl = dataReader["ImgUrl"].ToString()
                     };
                     result.Add(temp);
                 }
@@ -37,7 +38,7 @@ namespace mds.Dal
         internal static List<Webuser> GetPagerList(GridPagerParam param, List<int> userIds)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select UserId,UserName FROM webuser where UserId in ги");
+            strSql.Append("select UserId,UserName,ImgUrl FROM webuser where UserId in ги");
             strSql.Append(string.Join(",", userIds));
             strSql.Append(")");
             strSql.Append(" order by CreateTime desc");
@@ -50,7 +51,8 @@ namespace mds.Dal
                     var temp = new Webuser()
                     {
                         UserId = dataReader.GetInt32("UserId"),
-                        UserName = dataReader["UserName"].ToString()
+                        UserName = dataReader["UserName"].ToString(),
+                        ImgUrl = dataReader["ImgUrl"].ToString()
                     };
                     result.Add(temp);
                 }

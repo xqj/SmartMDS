@@ -29,7 +29,7 @@
             moreBtn: $("#moreBtn"),
             searchBtn: $("#searchBtn"),
             listWrap: $("#listWrap"),
-            listTmpl: "<li><img src=\"{ImgUrl}\" class=\"resumeHeadImg\" /><p><a href=\"ResumeDetail.aspx?id={UserId}\">{UserName}</a></li>",
+            listTmpl: "<li><a href=\"ResumeDetail.aspx?id={UserId}\"><img src=\"{ImgUrl}\" class=\"resumeHeadImg\" /></a><p><a href=\"ResumeDetail.aspx?id={UserId}\">{UserName}</a></li>",
             initPageObject: function () {
                 this.moreBtn.on("click", this.loadMore);
                 this.searchBtn.on("click", function () {
@@ -51,7 +51,7 @@
                     if (data.ActionResult) {
                         if (data.Data.length > 0) {
                             for (var i = 0; i < data.Data.length; i++) {
-                                pageObject.listWrap.append(pageObject.listTmpl.replace("{ImgUrl}", data.Data[i].ImgUrl).replace("{UserId}", data.Data[i].UserId).replace("{UserName}", data.Data[i].UserName));
+                                pageObject.listWrap.append(pageObject.listTmpl.replace("{ImgUrl}", data.Data[i].ImgUrl).replace("{UserId}", data.Data[i].UserId).replace("{UserId}", data.Data[i].UserId).replace("{UserName}", data.Data[i].UserName));
                             }
                         } else {
                             if (pageObject.currentPage > 1)

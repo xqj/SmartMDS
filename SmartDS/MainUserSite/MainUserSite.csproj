@@ -57,12 +57,159 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\default.css" />
+    <Content Include="css\mananger.css" />
+    <Content Include="css\me.css" />
+    <Content Include="css\user.css" />
+    <Content Include="img\head.jpg" />
+    <Content Include="index.aspx" />
+    <Content Include="js\lib\jquery-1.8.2.js" />
+    <Content Include="js\lib\jquery-1.8.2.min.js" />
+    <Content Include="js\lib\jquery.validate.min.js" />
+    <Content Include="js\lib\knockout-2.2.0.js" />
+    <Content Include="js\pageJs.js" />
+    <Content Include="js\plus\fancyboxv2\blank.gif" />
+    <Content Include="js\plus\fancyboxv2\demo\1_b.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\1_s.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\2_b.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\2_s.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\3_b.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\3_s.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\4_b.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\4_s.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\5_b.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\5_s.jpg" />
+    <Content Include="js\plus\fancyboxv2\demo\ajax.txt" />
+    <Content Include="js\plus\fancyboxv2\demo\demo.htm" />
+    <Content Include="js\plus\fancyboxv2\demo\iframe.html" />
+    <Content Include="js\plus\fancyboxv2\fancybox_loading%402x.gif" />
+    <Content Include="js\plus\fancyboxv2\fancybox_loading.gif" />
+    <Content Include="js\plus\fancyboxv2\fancybox_overlay.png" />
+    <Content Include="js\plus\fancyboxv2\fancybox_sprite%402x.png" />
+    <Content Include="js\plus\fancyboxv2\fancybox_sprite.png" />
+    <Content Include="js\plus\fancyboxv2\helpers\fancybox_buttons.png" />
+    <Content Include="js\plus\fancyboxv2\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="js\plus\fancyboxv2\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="js\plus\fancyboxv2\helpers\jquery.fancybox-media.js" />
+    <Content Include="js\plus\fancyboxv2\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="js\plus\fancyboxv2\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="js\plus\fancyboxv2\jquery.fancybox.css" />
+    <Content Include="js\plus\fancyboxv2\jquery.fancybox.js" />
+    <Content Include="js\plus\fancyboxv2\jquery.fancybox.pack.js" />
+    <Content Include="js\plus\pickadate\compressed\legacy.js" />
+    <Content Include="js\plus\pickadate\compressed\picker.date.js" />
+    <Content Include="js\plus\pickadate\compressed\picker.js" />
+    <Content Include="js\plus\pickadate\compressed\picker.time.js" />
+    <Content Include="js\plus\pickadate\compressed\themes\classic.css" />
+    <Content Include="js\plus\pickadate\compressed\themes\classic.date.css" />
+    <Content Include="js\plus\pickadate\compressed\themes\classic.time.css" />
+    <Content Include="js\plus\pickadate\compressed\themes\default.css" />
+    <Content Include="js\plus\pickadate\compressed\themes\default.date.css" />
+    <Content Include="js\plus\pickadate\compressed\themes\default.time.css" />
+    <Content Include="js\plus\pickadate\compressed\themes\rtl.css" />
+    <Content Include="js\plus\pickadate\compressed\translations\ar.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\bg_BG.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\bs_BA.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\ca_ES.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\cs_CZ.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\da_DK.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\de_DE.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\el_GR.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\es_ES.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\et_EE.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\eu_ES.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\fa_IR.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\fi_FI.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\fr_FR.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\gl_ES.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\he_IL.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\hi_IN.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\hr_HR.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\hu_HU.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\id_ID.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\is_IS.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\it_IT.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\ja_JP.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\ko_KR.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\lt_LT.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\lv_LV.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\nb_NO.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\ne_NP.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\nl_NL.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\no_NO.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\pl_PL.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\pt_BR.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\pt_PT.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\ro_RO.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\ru_RU.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\sk_SK.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\sl_SI.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\sv_SE.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\th_TH.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\tr_TR.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\uk_UA.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\vi_VN.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\zh_CN.js" />
+    <Content Include="js\plus\pickadate\compressed\translations\zh_TW.js" />
+    <Content Include="js\plus\pickadate\dateControlDemo.html" />
+    <Content Include="js\plus\pickadate\legacy.js" />
+    <Content Include="js\plus\pickadate\picker.date.js" />
+    <Content Include="js\plus\pickadate\picker.js" />
+    <Content Include="js\plus\pickadate\picker.time.js" />
+    <Content Include="js\plus\pickadate\themes-source\base.date.less" />
+    <Content Include="js\plus\pickadate\themes-source\base.less" />
+    <Content Include="js\plus\pickadate\themes-source\base.time.less" />
+    <Content Include="js\plus\pickadate\themes-source\classic.date.less" />
+    <Content Include="js\plus\pickadate\themes-source\classic.less" />
+    <Content Include="js\plus\pickadate\themes-source\classic.time.less" />
+    <Content Include="js\plus\pickadate\themes-source\default.date.less" />
+    <Content Include="js\plus\pickadate\themes-source\default.less" />
+    <Content Include="js\plus\pickadate\themes-source\default.time.less" />
+    <Content Include="js\plus\pickadate\themes-source\rtl.less" />
+    <Content Include="js\plus\pickadate\themes-source\_variables.less" />
+    <Content Include="js\plus\pickadate\themes\classic.css" />
+    <Content Include="js\plus\pickadate\themes\classic.date.css" />
+    <Content Include="js\plus\pickadate\themes\classic.time.css" />
+    <Content Include="js\plus\pickadate\themes\default.css" />
+    <Content Include="js\plus\pickadate\themes\default.date.css" />
+    <Content Include="js\plus\pickadate\themes\default.time.css" />
+    <Content Include="js\plus\pickadate\themes\rtl.css" />
+    <Content Include="js\plus\pickadate\translations\zh_CN.js" />
+    <Content Include="Resumes.aspx" />
+    <Content Include="UserService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frame.Master.cs">
+      <DependentUpon>Frame.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Frame.Master.designer.cs">
+      <DependentUpon>Frame.Master</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resumes.aspx.cs">
+      <DependentUpon>Resumes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Resumes.aspx.designer.cs">
+      <DependentUpon>Resumes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserService.asmx.cs">
+      <DependentUpon>UserService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Frame.Master" />
+    <None Include="js\lib\jquery-1.8.2.intellisense.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

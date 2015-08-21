@@ -15,7 +15,7 @@ namespace mds.DataAccess
             get { return DataConnectionConfig._instance; }
            
         }
-        public string Cat_bank
+        public string socialsite
         {
             get { return ConfigurationManager.ConnectionStrings["socialsite"].ToString(); }
         }

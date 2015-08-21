@@ -27,7 +27,7 @@ namespace MainUserSite
             if (sr.ActionResult)
             {
                 r.Message = "操作成功";
-                Session.Add("UserSession"+sr.Data.UserId.ToString(),sr.Data);
+                Session.Add("UserSession",sr.Data);
             }
             r.ActionResult = sr.ActionResult;
             return r;
@@ -40,10 +40,42 @@ namespace MainUserSite
             if (sr.ActionResult)
             {
                 r.Message = "操作成功";
-                Session.Add("UserSession" + sr.Data.UserId.ToString(), sr.Data);
+                Session.Add("UserSession", sr.Data);
             }
             r.ActionResult = sr.ActionResult;
             return r;
         }
+        [WebMethod(EnableSession = true)]
+        public OperationResult<ResumeView> GetPagers(int currentPage,int pageSize)
+        {
+            var r = new OperationResult<ResumeView>(false);
+            var sr = _instance.GetPagerList(new GridPagerParam() { CurrentPage=currentPage, PageSize=pageSize });
+            if (sr.ActionResult)
+            {
+                r.Message = "操作成功";
+              
+            }
+            r.ActionResult = sr.ActionResult;
+            return r;
+        }
+        [WebMethod(EnableSession = true)]
+        public OperationResult<ResumeView> SearchGetPagers(int currentPage, int pageSize,string searchKey)
+        {
+            var r = new OperationResult<ResumeView>(false);
+
+            var sr = _instance.GetPagerList(new GridPagerParam() { CurrentPage = currentPage, PageSize = pageSize });
+            if (sr.ActionResult)
+            {
+                r.Message = "操作成功";
+
+            }
+            r.ActionResult = sr.ActionResult;
+            return r;
+        }
+    }
+    public class ResumeView{
+        public int UserId{set;get;}
+        public string UserName{set;get;}
+
     }
 }

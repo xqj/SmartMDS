@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="badyContent" runat="server">
     <div class="searchContainer">
         <div class="search">
-            <input type="text" id="searchText" name="seracheText" value="搜索简历" class="searchText" /><span><a href="javascript:void(0);">搜索</a></span>
+            <input type="text" id="searchText" name="seracheText" placeholder="搜索简历" class="searchText" value=""/><span class="searcBtn"><a href="javascript:void(0);">搜索</a></span>
         </div>
     </div>
     <div id="resumeList">

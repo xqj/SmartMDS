@@ -11,8 +11,8 @@ namespace mds.DataAccess
         {
             switch (connectionName)
             {
-                case "Cat_bank":
-                    return DataConnectionConfig.Instance.Cat_bank;
+                case "socialsite":
+                    return DataConnectionConfig.Instance.socialsite;
                  
 
             }

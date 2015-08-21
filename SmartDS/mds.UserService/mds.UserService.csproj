@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dal\webusercontactDal.cs" />
     <Compile Include="Model\webusercontactModel.cs" />
+    <Compile Include="WebUserSearchProvider.cs" />
     <Compile Include="webusercontactProvider.cs" />
     <Compile Include="Dal\webuserDal.cs" />
     <Compile Include="Model\webuserModel.cs" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\mds.DataAccess\mds.DataAccess.csproj">
       <Project>{5BA92E05-8FF4-46B3-A6C3-72AB730AB6F9}</Project>
       <Name>mds.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mds.Search\mds.Search.csproj">
+      <Project>{c36f232d-9ffa-4cba-9e60-939c8f8be73c}</Project>
+      <Name>mds.Search</Name>
     </ProjectReference>
     <ProjectReference Include="..\mds.Util\mds.Util.csproj">
       <Project>{6FBD9EAC-7D18-496F-8412-AA46F836907D}</Project>

@@ -71,8 +71,8 @@ namespace mds.Dal
                     r.Mobile = dataReader["Mobile"].ToString();
                     r.IDCard = dataReader["IDCard"].ToString();
                     r.Nationality = dataReader["Nationality"].ToString();
-                    r.ImgUrl = dataReader["ImgUrl"].ToString(); 
-                    r.CreateTime = dataReader.GetDateTime("CreateTime"); 
+                    r.ImgUrl = dataReader["ImgUrl"].ToString();
+                    r.CreateTime = dataReader.GetDateTime("CreateTime");
                     return r;
                 }
                 else
@@ -109,14 +109,27 @@ namespace mds.Dal
             return ExecuteNonQuery(_DatabaseName, parameters, "update webuser set UserId=?UserId,LoginName=?LoginName,Mobile=?Mobile,Sex=?Sex,IDCard=?IDCard,Nationality=?Nationality,ImgUrl=?ImgUrl,CreateTime=?CreateTime where userID=?userID;", CommandType.Text) > 0 ? true : false;
         }
 
-        internal static int Reg(string loginName, string pwd, string email)
+        internal static Webuser Reg(string loginName, string pwd, string email)
         {
             List<MySqlParameter> parameters = new List<MySqlParameter>();
             parameters.Add(new MySqlParameter("?LoginName", loginName));
             parameters.Add(new MySqlParameter("?Email", email));
             parameters.Add(new MySqlParameter("?Pwd", pwd));
             parameters.Add(new MySqlParameter("?CreateTime", DateTime.Now));
-            ; return GetPrimarykey(_DatabaseName, parameters.ToArray(), "insert into webuser(LoginName,Email,Pwd,CreateTime)  values (?LoginName,?Email,?Pwd,?CreateTime);SELECT  @@IDENTITY as id", CommandType.Text);
+            var id = GetPrimarykey(_DatabaseName, parameters.ToArray(), "insert into webuser(LoginName,Email,Pwd,CreateTime)  values (?LoginName,?Email,?Pwd,?CreateTime);SELECT  @@IDENTITY as id", CommandType.Text);
+            if (id > 0)
+            {
+                return new Webuser()
+                {
+                    UserId = id,
+                    LoginName = loginName,
+                    Email = email
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         internal static Webuser Login(string loginName, string pwd)

@@ -49,10 +49,23 @@
 }
 
 .searchText {
-    width: 260px;
-    height: 30px;
+    width: 320px;
+    height: 45px;
 }
-
+.searcBtn{
+    background-color: #2d57a1;
+    margin-left:8px;
+    width:100px;
+    height:45px;
+    display:inline-block;   
+    text-align:center;
+    vertical-align:middle;
+    line-height: 45px;
+}
+.searcBtn a{    
+    color:white;  
+     font-size: 15px;
+}
 .login {
      margin: 0 auto;
     padding-top: 8%;

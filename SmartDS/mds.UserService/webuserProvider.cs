@@ -1,6 +1,5 @@
 using mds.Dal;
 using mds.BaseModel;
-using mds.Dal;
 using mds.Util;
 using System;
 using System.Collections.Generic;
@@ -8,10 +7,10 @@ using System.Linq;
 using System.Text;
 namespace mds.UserService
 {
-    public class WebUserProvider : mds.UserService.IWebUserProvider
+    public class WebUserProvider : IWebUserProvider
     {
         private static WebUserProvider _instance = new WebUserProvider();
-
+        private static WebUserSearchProvider _searchInstance = new WebUserSearchProvider();
         public static IWebUserProvider Instance
         {
             get { return WebUserProvider._instance; }
@@ -33,6 +32,14 @@ namespace mds.UserService
             r.Data = webuserDal.GetPagerList(param, searchIds);
             r.ActionResult = (r.Data != null) ? true : false;
 
+            return r;
+        }
+        public mds.BaseModel.GridPager<mds.BaseModel.Webuser> GetSearchPager(mds.BaseModel.GridPagerParam param, string searchKey)
+        {
+            var r = new GridPager<Webuser>(false);
+            List<int> searchIds = _searchInstance.SearchKey(searchKey);
+            r.Data = webuserDal.GetPagerList(param, searchIds);
+            r.ActionResult = (r.Data != null) ? true : false;
             return r;
         }
         public OperationResult<Webuser> GetDetail(int webuserId)
@@ -58,12 +65,12 @@ namespace mds.UserService
         }
 
 
-        public OperationResult<int> Reg(string loginName, string pwd, string email, string verfiycode)
+        public OperationResult<mds.BaseModel.Webuser> Reg(string loginName, string pwd, string email, string verfiycode)
         {
             ArgumentHelper.AssertNotNullOrEmpty(loginName, pwd, email);
-            var r = new OperationResult<int>();
+            var r = new OperationResult<mds.BaseModel.Webuser>();
             r.Data = webuserDal.Reg(loginName, pwd, email);
-            r.ActionResult = (r.Data > 0) ? true : false;
+            r.ActionResult = (r.Data!=null) ? true : false;
             return r;
         }
 
@@ -75,5 +82,8 @@ namespace mds.UserService
             r.ActionResult = (r.Data!=null) ? true : false;
             return r;
         }
+
+
+       
     }
 }

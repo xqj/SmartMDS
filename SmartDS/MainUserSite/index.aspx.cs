@@ -11,7 +11,13 @@ namespace MainUserSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Session["UserSession"] != null)
+                {
+                    Response.Redirect("Resumes.aspx");
+                }
+            }
         }
     }
 }

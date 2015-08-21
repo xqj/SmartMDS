@@ -102,10 +102,11 @@ namespace mds.UserService
 
         public ActionMsg ChangePwd(int userId, string oldPwd, string newPwd)
         {
-            var r = new ActionMsg(false,"操作失败");
+            var r = new ActionMsg(false, "密码修改失败");
             if (webuserDal.VerfiyOldPwd(userId,oldPwd))
             {
                 r.ActionResult = webuserDal.ChangePwd(userId, newPwd);
+                r.Message = "密码修改成功";
             }
             return r;
         }

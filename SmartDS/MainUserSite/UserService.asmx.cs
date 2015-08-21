@@ -22,21 +22,8 @@ namespace MainUserSite
         [WebMethod(EnableSession = true)]
         public ActionMsg Login(string loginName, string pwd)
         {
-            var r = new ActionMsg(false,"登陆失败");
-            var sr=_instance.Login(loginName, pwd);
-            if (sr.ActionResult)
-            {
-                r.Message = "操作成功";
-                Session.Add("UserSession",sr.Data);
-            }
-            r.ActionResult = sr.ActionResult;
-            return r;
-        }
-        [WebMethod(EnableSession = true)]
-        public ActionMsg Reg(string loginName, string pwd, string email)
-        {
-            var r = new ActionMsg(false, "注册失败");
-            var sr = _instance.Reg(loginName, pwd,email,string.Empty);
+            var r = new ActionMsg(false, "登陆失败");
+            var sr = _instance.Login(loginName, pwd);
             if (sr.ActionResult)
             {
                 r.Message = "操作成功";
@@ -46,19 +33,59 @@ namespace MainUserSite
             return r;
         }
         [WebMethod(EnableSession = true)]
-        public mds.BaseModel.GridPager<mds.BaseModel.Webuser> GetPagers(int currentPage, int pageSize)
+        public ActionMsg Reg(string loginName, string pwd, string email)
         {
-          return _instance.GetPagerList(new GridPagerParam() { CurrentPage=currentPage, PageSize=pageSize });
-           
+            var r = new ActionMsg(false, "注册失败");
+            var sr = _instance.Reg(loginName, pwd, email, string.Empty);
+            if (sr.ActionResult)
+            {
+                r.Message = "操作成功";
+                Session.Add("UserSession", sr.Data);
+            }
+            r.ActionResult = sr.ActionResult;
+            return r;
+        }
+          [WebMethod(EnableSession = true)]
+        public ActionMsg ModifyPwd(int userId, string oldPwd, string newPwd)
+        {
+            var r = new ActionMsg(false, "操作失败");
+            if (Session["UserSession"] == null) return r;
+            return _instance.ChangePwd(userId, oldPwd, newPwd);
         }
         [WebMethod(EnableSession = true)]
+        public ActionMsg ModifyUser(int userId, string loginName, string email, string userName, string imgUrl, string mobile, string IDCard, string nationality, bool sex)
+        {
+            var r = new ActionMsg(false, "操作失败");
+            if (Session["UserSession"] == null) return r;
+            return _instance.Modify(new Webuser()
+            {
+                UserName = userName,
+                ImgUrl = imgUrl,
+                Mobile = mobile,
+                IDCard = IDCard,
+                Nationality = nationality,
+                LoginName = loginName,
+                UserId = userId,
+                Email = email,
+                Sex = sex
+
+            });
+            
+        }
+        [WebMethod]
+        public mds.BaseModel.GridPager<mds.BaseModel.Webuser> GetPagers(int currentPage, int pageSize)
+        {
+            return _instance.GetPagerList(new GridPagerParam() { CurrentPage = currentPage, PageSize = pageSize });
+
+        }
+        [WebMethod]
         public mds.BaseModel.GridPager<mds.BaseModel.Webuser> SearchGetPagers(int currentPage, int pageSize, string searchKey)
         {
-            if(string.IsNullOrEmpty(searchKey))
+            if (string.IsNullOrEmpty(searchKey))
                 return _instance.GetPagerList(new GridPagerParam() { CurrentPage = currentPage, PageSize = pageSize });
             else
                 return _instance.GetSearchPager(new GridPagerParam() { CurrentPage = currentPage, PageSize = pageSize }, searchKey);
         }
     }
-    
+
 }

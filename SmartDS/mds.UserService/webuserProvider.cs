@@ -69,7 +69,8 @@ namespace mds.UserService
             return r;
         }
         public ActionMsg Modify(Webuser info)
-        {           // ArgumentHelper.AssertNotNullOrEmpty(info.infoName);
+        {     
+            // ArgumentHelper.AssertNotNullOrEmpty(info.infoName);
             var r = new ActionMsg();
             r.ActionResult = webuserDal.Modify(info);
             return r;
@@ -95,6 +96,17 @@ namespace mds.UserService
         }
 
 
-       
+
+
+
+        public ActionMsg ChangePwd(int userId, string oldPwd, string newPwd)
+        {
+            var r = new ActionMsg(false,"²Ù×÷Ê§°Ü");
+            if (webuserDal.VerfiyOldPwd(userId,oldPwd))
+            {
+                r.ActionResult = webuserDal.ChangePwd(userId, newPwd);
+            }
+            return r;
+        }
     }
 }

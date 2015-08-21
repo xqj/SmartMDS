@@ -63,13 +63,14 @@ namespace mds.Dal
         {
             List<MySqlParameter> parameters = new List<MySqlParameter>();
             parameters.Add(new MySqlParameter("?id", id));
-            Webuser result = GetDataByReader<Webuser>(_DatabaseName, parameters, "select * from webuser where id=?id;", CommandType.Text, delegate(MySqlDataReader dataReader)
+            Webuser result = GetDataByReader<Webuser>(_DatabaseName, parameters, "select * from webuser where UserId=?id;", CommandType.Text, delegate(MySqlDataReader dataReader)
             {
                 if (dataReader.Read())
                 {
                     var r = new Webuser();
                     r.UserId = dataReader.GetInt32("UserId");
                     r.LoginName = dataReader["LoginName"].ToString();
+                    r.UserName = dataReader["UserName"].ToString();
                     r.Mobile = dataReader["Mobile"].ToString();
                     r.IDCard = dataReader["IDCard"].ToString();
                     r.Nationality = dataReader["Nationality"].ToString();
@@ -175,6 +176,23 @@ namespace mds.Dal
                     result.Add(r);
                 }
             });
+        }
+
+        internal static bool VerfiyOldPwd(int userId, string oldPwd)
+        {
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter("?UserId", userId));
+            parameters.Add(new MySqlParameter("?Pwd", oldPwd));
+           return GetPrimarykey(_DatabaseName,parameters.ToArray(), "select UserId from webuser where UserId=?UserId and Pwd=?Pwd;", CommandType.Text)>0;
+           
+        }
+
+        internal static bool ChangePwd(int userId, string newPwd)
+        {
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter("?UserId", userId));
+            parameters.Add(new MySqlParameter("?Pwd", newPwd));
+            return ExecuteNonQuery(_DatabaseName, parameters, "update webuser set Pwd=?Pwd where userID=?userID;", CommandType.Text) > 0 ? true : false;
         }
     }
 }

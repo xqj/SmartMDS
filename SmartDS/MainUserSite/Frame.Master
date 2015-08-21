@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Frame.master.cs" Inherits="MainUserSite.Frame" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/user.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="loading" style="display: none; width: 100%; height: 100%; position: absolute; background-color: gray;">加载中.......</div>
+        <div class="container">
+            <div class="header">
+                <ul class="headermenu">
+                    <li class="headermenuright"><a href="index.aspx" target="_self">首页</a></li>
+                    <li class="headermenuright"><a href="Resumes.aspx" target="_self">简历</a></li>
+                    <li class=""><a href="Me.aspx" target="_self">ME</a></li>
+                 
+                </ul>
+            </div>
+            <div class="middleContainer">
+                <asp:ContentPlaceHolder ID="badyContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <asp:ContentPlaceHolder ID="dialogContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="footer">
+                <ul class="footer_middle">
+                    <li class="bor_right">
+                        <a href="###" target="_blank">关于我们</a>
+                    </li>                   
+                    <li class="bor_right">
+                        <a href="###" target="_blank">隐私条款</a>
+                    </li>
+                    <li class="bor_right">
+                        <a href="###" target="_blank">帮助中心</a>
+                    </li>
+                      <li class="bor_right">
+                        <a href="###" target="_blank">联系我们</a>
+                    </li>
+                    <li>
+                        <a href="http://www.miitbeian.gov.cn">京ICP备15011783号-1</a>
+                    </li>
+                </ul>
+            </div>
+            <script src="js/lib/jquery-1.8.2.min.js"></script>
+            <script src="js/lib/jquery.validate.min.js"></script>
+            <script src="js/lib/knockout-2.2.0.js"></script>
+            <script src="js/pageJs.js"></script>
+            <asp:ContentPlaceHolder ID="jsContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="jsPlus" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

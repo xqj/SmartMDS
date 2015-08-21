@@ -81,7 +81,7 @@
                 });
             }
         }
-        $.ready(function () {
+        $(document).ready(function () {
             pageObject.initPageObject();
         });
     </script>

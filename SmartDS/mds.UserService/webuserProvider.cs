@@ -16,6 +16,10 @@ namespace mds.UserService
             get { return WebUserProvider._instance; }
             
         }
+        public static void CreateIndex()
+        {
+            _searchInstance.CreateIndex(webuserDal.GetListForSearch());
+        }
         public GridPager<Webuser> GetPagerList(GridPagerParam param)
         {
              var r = new GridPager<Webuser>(false);
@@ -38,7 +42,10 @@ namespace mds.UserService
         {
             var r = new GridPager<Webuser>(false);
             List<int> searchIds = _searchInstance.SearchKey(searchKey);
-            r.Data = webuserDal.GetPagerList(param, searchIds);
+            if ((searchIds != null) && (searchIds.Count > 0))
+            {
+                r.Data = webuserDal.GetPagerList(param, searchIds);
+            }
             r.ActionResult = (r.Data != null) ? true : false;
             return r;
         }

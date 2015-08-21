@@ -141,7 +141,8 @@ namespace mds.Dal
             {
                 if (dataReader.Read())
                 {
-                    var r = new Webuser(); r.UserId = dataReader.GetInt32("UserId");
+                    var r = new Webuser();
+                    r.UserId = dataReader.GetInt32("UserId");
                     r.LoginName = dataReader["LoginName"].ToString();
                     r.Mobile = dataReader["Mobile"].ToString();
                     r.Email = dataReader["Email"].ToString();
@@ -155,6 +156,23 @@ namespace mds.Dal
                     return null;
             });
             return result;
+        }
+
+        internal static List<Webuser> GetListForSearch()
+        {
+            return GetListByReader<Webuser>(_DatabaseName, null, "select * from webuser", CommandType.Text, delegate(MySqlDataReader dataReader, List<Webuser> result)
+            {
+                while (dataReader.Read())
+                {
+                    var r = new Webuser();                   
+                    r.UserId = dataReader.GetInt32("UserId");
+                    r.LoginName = dataReader["LoginName"].ToString();
+                    r.Mobile = dataReader["Mobile"].ToString();
+                    r.IDCard = dataReader["IDCard"].ToString();
+                    r.Nationality = dataReader["Nationality"].ToString();                    
+                    result.Add(r);
+                }
+            });
         }
     }
 }

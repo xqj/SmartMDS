@@ -46,36 +46,19 @@ namespace MainUserSite
             return r;
         }
         [WebMethod(EnableSession = true)]
-        public OperationResult<ResumeView> GetPagers(int currentPage,int pageSize)
+        public mds.BaseModel.GridPager<mds.BaseModel.Webuser> GetPagers(int currentPage, int pageSize)
         {
-            var r = new OperationResult<ResumeView>(false);
-            var sr = _instance.GetPagerList(new GridPagerParam() { CurrentPage=currentPage, PageSize=pageSize });
-            if (sr.ActionResult)
-            {
-                r.Message = "操作成功";
-              
-            }
-            r.ActionResult = sr.ActionResult;
-            return r;
+          return _instance.GetPagerList(new GridPagerParam() { CurrentPage=currentPage, PageSize=pageSize });
+           
         }
         [WebMethod(EnableSession = true)]
-        public OperationResult<ResumeView> SearchGetPagers(int currentPage, int pageSize,string searchKey)
+        public mds.BaseModel.GridPager<mds.BaseModel.Webuser> SearchGetPagers(int currentPage, int pageSize, string searchKey)
         {
-            var r = new OperationResult<ResumeView>(false);
-
-            var sr = _instance.GetPagerList(new GridPagerParam() { CurrentPage = currentPage, PageSize = pageSize });
-            if (sr.ActionResult)
-            {
-                r.Message = "操作成功";
-
-            }
-            r.ActionResult = sr.ActionResult;
-            return r;
+            if(string.IsNullOrEmpty(searchKey))
+                return _instance.GetPagerList(new GridPagerParam() { CurrentPage = currentPage, PageSize = pageSize });
+            else
+                return _instance.GetSearchPager(new GridPagerParam() { CurrentPage = currentPage, PageSize = pageSize }, searchKey);
         }
     }
-    public class ResumeView{
-        public int UserId{set;get;}
-        public string UserName{set;get;}
-
-    }
+    
 }

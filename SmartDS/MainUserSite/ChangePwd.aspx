@@ -34,7 +34,32 @@
                 this.checkVal();
             },
             checkVal: function () {
-
+                $("#form1").validate({
+                    rules: {
+                        oldPwd: {
+                            required: true,
+                            minlength: 6,
+                            maxlength: 20,
+                        },
+                        newPwd: {
+                            required: true,
+                            minlength: 6,
+                            maxlength: 20,
+                        }
+                    },
+                    messages: {
+                        oldPwd: {
+                            required: "此处必填",
+                            minlength: "至少6个字符",
+                            maxlength: "最多20个字符",
+                        },
+                        newPwd: {
+                            required: "此处必填",
+                            minlength: "至少6个字符",
+                            maxlength: "最多20个字符",
+                        }
+                    }
+                });
             },
             initParamter: function () {
                 pageObject.paramter = {                   

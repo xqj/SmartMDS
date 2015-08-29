@@ -55,14 +55,15 @@ namespace mds.UserService
         }
         public OperationResult<Webuser> GetDetail(int webuserId)
         {
-            // ArgumentHelper.AssertInRange("webuserId", webuserId, 1, int.MaxValue);
+            ArgumentHelper.AssertInRange("webuserId", webuserId, 1, int.MaxValue);
             var r = new OperationResult<Webuser>();
             r.Data = webuserDal.GetDetail(webuserId);
             r.ActionResult = (r.Data != null) ? true : false;
             return r;
         }
         public OperationResult<int> Create(Webuser info)
-        {           // ArgumentHelper.AssertNotNullOrEmpty(info.webuserName);
+        {   
+            // ArgumentHelper.AssertNotNullOrEmpty(info.webuserName);
             var r = new OperationResult<int>();
             r.Data = webuserDal.Create(info);
             r.ActionResult = (r.Data > 0) ? true : false;

@@ -8,7 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace mds.BussinessService.Dal
+namespace mds.Dal
 {
     internal class loginsessionDal : MysqlDatabaseFactory<BaseModel.loginsession>
     {
@@ -84,15 +84,14 @@ namespace mds.BussinessService.Dal
         }
         internal static int Create(BaseModel.loginsession model)
         {
-            List<MySqlParameter> parameters = new List<MySqlParameter>();
-            parameters.Add(new MySqlParameter("?SessionId", model.SessionId));
+            List<MySqlParameter> parameters = new List<MySqlParameter>();           
             parameters.Add(new MySqlParameter("?LoginId", model.LoginId));
             parameters.Add(new MySqlParameter("?SessionSign", model.SessionSign));
-            parameters.Add(new MySqlParameter("?CreateTime", model.CreateTime));
+            parameters.Add(new MySqlParameter("?CreateTime", DateTime.Now));
             parameters.Add(new MySqlParameter("?Timelength", model.Timelength));
             parameters.Add(new MySqlParameter("?TimeUnit", model.TimeUnit));
 
-            ; return DatabaseFactory.GetPrimarykey(_DatabaseName, parameters.ToArray(), "insert into loginsession(SessionId,LoginId,SessionSign,CreateTime,Timelength,TimeUnit)  values (?SessionId,?LoginId,?SessionSign,?CreateTime,?Timelength,?TimeUnit);SELECT  @@IDENTITY as id", CommandType.Text);
+            ; return GetPrimarykey(_DatabaseName, parameters.ToArray(), "insert into loginsession(LoginId,SessionSign,CreateTime,Timelength,TimeUnit)  values (?LoginId,?SessionSign,?CreateTime,?Timelength,?TimeUnit);SELECT  @@IDENTITY as id", CommandType.Text);
         }
         internal static bool Modify(BaseModel.loginsession model)
         {
@@ -104,7 +103,7 @@ namespace mds.BussinessService.Dal
             parameters.Add(new MySqlParameter("?Timelength", model.Timelength));
             parameters.Add(new MySqlParameter("?TimeUnit", model.TimeUnit));
 
-            return DatabaseFactory.ExecuteNonQuery(_DatabaseName, parameters, "update loginsession set SessionId=?SessionId,LoginId=?LoginId,SessionSign=?SessionSign,CreateTime=?CreateTime,Timelength=?Timelength,TimeUnit=?TimeUnit where userID=?userID;", CommandType.Text) > 0 ? true : false;
+            return ExecuteNonQuery(_DatabaseName, parameters, "update loginsession set SessionId=?SessionId,LoginId=?LoginId,SessionSign=?SessionSign,CreateTime=?CreateTime,Timelength=?Timelength,TimeUnit=?TimeUnit where userID=?userID;", CommandType.Text) > 0 ? true : false;
         }
     }
 }

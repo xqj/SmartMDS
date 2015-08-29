@@ -53,5 +53,10 @@ namespace mds.SecurityService
             cookie.Value = HttpUtility.UrlEncode(Webuser.UserId.ToString() + "&" + System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(Webuser.UserId.ToString(), "MD5"));
             HttpContext.Current.Response.SetCookie(cookie);
         }
+        public static string SetSession(loginsession session)
+        {
+           return HttpUtility.UrlEncode(session.SessionSign.ToString() + "&" + System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(session.LoginId.ToString(), "MD5"));
+           
+        }
     }
 }

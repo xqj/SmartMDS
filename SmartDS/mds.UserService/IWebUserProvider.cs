@@ -13,5 +13,7 @@ namespace mds.UserService
         mds.BaseModel.ActionMsg Modify(mds.BaseModel.Webuser info);
 
         BaseModel.ActionMsg ChangePwd(int userId, string oldPwd, string newPwd);
+
+        BaseModel.OperationResult<BaseModel.loginsession> LoginSession(string loginName, string pwd);
     }
 }

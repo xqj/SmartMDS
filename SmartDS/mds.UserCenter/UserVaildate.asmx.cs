@@ -33,7 +33,7 @@ namespace mds.UserCenter
             var r = SecurityProvider.Instance.ThirdLogin(loginName, pwd);
             if (r.ActionResult)
             {
-                return r.Data.SessionSign;
+                return CurrentUser.SetSession(r.Data);
             }
             return string.Empty;
         }

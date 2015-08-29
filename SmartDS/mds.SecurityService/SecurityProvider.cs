@@ -56,7 +56,7 @@ namespace mds.SecurityService
 
         public OperationResult<loginsession> ThirdLogin(string loginName, string pwd)
         {
-            throw new NotImplementedException();
+            return WebUserProvider.Instance.LoginSession(loginName, pwd);
         }
     }
 }

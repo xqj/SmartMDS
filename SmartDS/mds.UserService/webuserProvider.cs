@@ -111,5 +111,30 @@ namespace mds.UserService
             }
             return r;
         }
+
+
+        public OperationResult<loginsession> LoginSession(string loginName, string pwd)
+        {
+            ArgumentHelper.AssertNotNullOrEmpty(loginName, pwd);
+            var r = new OperationResult<loginsession>(false);
+            var tr = loginuserDal.Login(loginName, pwd);
+            if (tr != null)
+            {
+                var session=new loginsession(){
+                 CreateTime=DateTime.Now,
+                  LoginId=tr.LoginId,
+                   SessionSign=Guid.NewGuid().ToString("N"),
+                    Timelength=1,
+                     TimeUnit="Ìì"
+                };
+                session.SessionId=loginsessionDal.Create(session);
+                if (session.SessionId > 0)
+                {
+                    r.Data = session;
+                }
+            }
+            r.ActionResult = (r.Data != null) ? true : false;
+            return r;
+        }
     }
 }

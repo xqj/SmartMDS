@@ -8,7 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace mds.BussinessService.Dal
+namespace mds.Dal
 {
     internal class loginuserDal : MysqlDatabaseFactory<BaseModel.loginuser>
     {
@@ -101,6 +101,21 @@ namespace mds.BussinessService.Dal
             parameters.Add(new MySqlParameter("?CreateTime", model.CreateTime));
 
             return ExecuteNonQuery(_DatabaseName, parameters, "update loginuser set LoginId=?LoginId,UserId=?UserId,LoginName=?LoginName,Pwd=?Pwd,CreateTime=?CreateTime where userID=?userID;", CommandType.Text) > 0 ? true : false;
+        }
+
+        internal static loginuser Login(string loginName, string pwd)
+        {
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter("?loginName",loginName));
+            parameters.Add(new MySqlParameter("?pwd", pwd));
+            BaseModel.loginuser result = GetDataByReader<BaseModel.loginuser>(_DatabaseName, parameters, "select * from loginuser where LoginName=?loginName and Pwd=?pwd;", CommandType.Text, delegate(MySqlDataReader dataReader) { if (dataReader.Read()) { 
+                var r = new BaseModel.loginuser();
+                r.LoginId = dataReader.GetInt32("LoginId"); r.UserId = dataReader.GetInt32("UserId"); r.LoginName = dataReader["LoginName"].ToString(); r.Pwd = dataReader["Pwd"].ToString();
+                r.CreateTime = dataReader.GetDateTime("CreateTime"); return r;
+            } else                   
+                return null;
+            });
+            return result;
         }
     }
 }

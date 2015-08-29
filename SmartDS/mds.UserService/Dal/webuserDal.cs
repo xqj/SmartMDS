@@ -12,7 +12,7 @@ namespace mds.Dal
 {
     internal class webuserDal : MysqlDatabaseFactory<Webuser>
     {
-        private static string _DatabaseName = "socialsite";
+        private static string _DatabaseName = "userservice";
         internal static List<Webuser> GetPagerList(GridPagerParam param)
         {
             StringBuilder strSql = new StringBuilder();

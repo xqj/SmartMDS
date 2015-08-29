@@ -12,7 +12,7 @@ namespace mds.Dal
 {
     internal class loginsessionDal : MysqlDatabaseFactory<BaseModel.loginsession>
     {
-        private static string _DatabaseName = "Cat_bank";
+        private static string _DatabaseName = "userservice";
         internal static List<BaseModel.loginsession> GetUnion(string searchName, DateTime startTime, DateTime endTime, BaseModel.GridPagerParam param, long operationBy, out int total)
         {
             StringBuilder strSql = new StringBuilder();
@@ -104,6 +104,23 @@ namespace mds.Dal
             parameters.Add(new MySqlParameter("?TimeUnit", model.TimeUnit));
 
             return ExecuteNonQuery(_DatabaseName, parameters, "update loginsession set SessionId=?SessionId,LoginId=?LoginId,SessionSign=?SessionSign,CreateTime=?CreateTime,Timelength=?Timelength,TimeUnit=?TimeUnit where userID=?userID;", CommandType.Text) > 0 ? true : false;
+        }
+
+        internal static loginsession GetDetailBySign(string sessionSign)
+        {
+            List<MySqlParameter> parameters = new List<MySqlParameter>();
+            parameters.Add(new MySqlParameter("?sessionSign",sessionSign));
+            BaseModel.loginsession result = GetDataByReader<BaseModel.loginsession>(_DatabaseName, parameters, "select * from loginsession where SessionSign=?SessionSign;", CommandType.Text, delegate(MySqlDataReader dataReader) { 
+                if (dataReader.Read()) { 
+                var r = new BaseModel.loginsession();
+                r.SessionId = dataReader.GetInt32("SessionId"); r.LoginId = dataReader.GetInt32("LoginId"); r.SessionSign = dataReader["SessionSign"].ToString();
+                r.CreateTime = dataReader.GetDateTime("CreateTime");
+                r.Timelength = dataReader.GetInt32("Timelength"); r.TimeUnit = dataReader["TimeUnit"].ToString(); return r;
+            }
+            else                 
+                return null; 
+            }); 
+            return result;
         }
     }
 }

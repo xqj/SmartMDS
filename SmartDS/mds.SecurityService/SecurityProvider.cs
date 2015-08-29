@@ -58,5 +58,10 @@ namespace mds.SecurityService
         {
             return WebUserProvider.Instance.LoginSession(loginName, pwd);
         }
+
+        internal OperationResult<loginsession> GetSession(string sessionSign)
+        {
+            return WebUserProvider.Instance.GetSessionBySign(sessionSign);
+        }
     }
 }

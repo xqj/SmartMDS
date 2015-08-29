@@ -136,5 +136,14 @@ namespace mds.UserService
             r.ActionResult = (r.Data != null) ? true : false;
             return r;
         }
+
+
+        public OperationResult<loginsession> GetSessionBySign(string sessionSign)
+        {
+            var r = new OperationResult<loginsession>(false);
+            r.Data = loginsessionDal.GetDetailBySign(sessionSign);
+            r.ActionResult = (r.Data != null) ? true : false;
+            return r;
+        }
     }
 }

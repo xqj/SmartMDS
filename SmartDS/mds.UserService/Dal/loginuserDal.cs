@@ -12,7 +12,7 @@ namespace mds.Dal
 {
     internal class loginuserDal : MysqlDatabaseFactory<BaseModel.loginuser>
     {
-        private static string _DatabaseName = "Cat_bank";
+        private static string _DatabaseName = "userservice";
         internal static List<BaseModel.loginuser> GetUnion(string searchName, DateTime startTime, DateTime endTime, BaseModel.GridPagerParam param, long operationBy, out int total)
         {
             StringBuilder strSql = new StringBuilder();

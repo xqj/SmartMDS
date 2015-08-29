@@ -9,7 +9,7 @@ namespace mds.SecurityService
 {
     public class CurrentUser
     {
-        public bool isLogin(string cookieVal)
+        public static bool isLogin(string cookieVal)
         {
             if (!string.IsNullOrEmpty(cookieVal))
             {
@@ -55,8 +55,28 @@ namespace mds.SecurityService
         }
         public static string SetSession(loginsession session)
         {
-           return HttpUtility.UrlEncode(session.SessionSign.ToString() + "&" + System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(session.LoginId.ToString(), "MD5"));
+            return HttpUtility.UrlEncode(session.SessionSign + "&" + System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(session.LoginId.ToString() + session.SessionSign, "MD5"));
            
+        }
+        public static bool isSession(string sessionSign)
+        {
+            if (!string.IsNullOrEmpty(sessionSign))
+            {
+                string[] strArr = sessionSign.Split('&');
+                if (strArr.Length == 2)
+                {
+                   var tr=SecurityProvider.Instance.GetSession(strArr[0]);
+                   if (!tr.ActionResult) return false;
+                   var session = tr.Data;
+                   string key = session.SessionSign;
+                   string keyS = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(session.LoginId.ToString() + session.SessionSign, "MD5");
+                    if ((keyS == strArr[1]) && (strArr[0] == key))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

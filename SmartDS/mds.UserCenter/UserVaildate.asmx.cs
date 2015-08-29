@@ -1,4 +1,5 @@
-﻿using mds.SecurityService;
+﻿using mds.BaseModel;
+using mds.SecurityService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,24 +19,31 @@ namespace mds.UserCenter
     public class UserVaildate : System.Web.Services.WebService
     {
 
+        //[WebMethod]
+        //public void WebLogin(string loginName,string pwd)
+        //{
+        //    var r=SecurityProvider.Instance.Login(loginName, pwd);
+        //    if (r.ActionResult)
+        //    {
+        //        CurrentUser.SetCookie(r.Data);
+        //    }
+        //}
         [WebMethod]
-        public void WebLogin(string loginName,string pwd)
+        public OperationResult<string> ThirdLogin(string loginName, string pwd)
         {
-            var r=SecurityProvider.Instance.Login(loginName, pwd);
-            if (r.ActionResult)
+            var r = new OperationResult<string>(false);
+            var tr = SecurityProvider.Instance.ThirdLogin(loginName, pwd);
+            if (tr.ActionResult)
             {
-                CurrentUser.SetCookie(r.Data);
+                r.Data= CurrentUser.SetSession(tr.Data);
+                r.ActionResult = string.IsNullOrEmpty(r.Data) ? false : true;
             }
+            return r;
         }
         [WebMethod]
-        public string ThirdLogin(string loginName, string pwd)
+        public bool SessionVaildate(string session)
         {
-            var r = SecurityProvider.Instance.ThirdLogin(loginName, pwd);
-            if (r.ActionResult)
-            {
-                return CurrentUser.SetSession(r.Data);
-            }
-            return string.Empty;
+            return CurrentUser.isSession(session);
         }
     }
 }

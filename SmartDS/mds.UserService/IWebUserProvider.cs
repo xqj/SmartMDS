@@ -15,5 +15,7 @@ namespace mds.UserService
         BaseModel.ActionMsg ChangePwd(int userId, string oldPwd, string newPwd);
 
         BaseModel.OperationResult<BaseModel.loginsession> LoginSession(string loginName, string pwd);
+
+        BaseModel.OperationResult<BaseModel.loginsession> GetSessionBySign(string sessionSign);
     }
 }

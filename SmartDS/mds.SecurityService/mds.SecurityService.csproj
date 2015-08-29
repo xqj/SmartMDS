@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentUser.cs" />
+    <Compile Include="DefineTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecurityServiceImp.cs" />
+    <Compile Include="SecurityProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mds.BaseModel\mds.BaseModel.csproj">

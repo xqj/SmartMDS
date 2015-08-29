@@ -45,7 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal\loginsessionDal.cs" />
+    <Compile Include="Dal\loginuserDal.cs" />
     <Compile Include="IWebUserProvider.cs" />
+    <Compile Include="Model\loginsessionModel.cs" />
+    <Compile Include="Model\loginuserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Dal\webusercontactDal.cs" />
     <Compile Include="Model\webusercontactModel.cs" />

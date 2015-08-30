@@ -62,6 +62,7 @@ namespace mds.SecurityService
         {
             if (!string.IsNullOrEmpty(sessionSign))
             {
+                sessionSign = HttpUtility.UrlDecode(sessionSign);
                 string[] strArr = sessionSign.Split('&');
                 if (strArr.Length == 2)
                 {

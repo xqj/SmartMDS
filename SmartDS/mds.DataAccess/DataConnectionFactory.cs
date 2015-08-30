@@ -13,7 +13,8 @@ namespace mds.DataAccess
             {
                 case "socialsite":
                     return DataConnectionConfig.Instance.socialsite;
-                 
+                case "userservice":
+                    return DataConnectionConfig.Instance.userservice;
 
             }
             return "";

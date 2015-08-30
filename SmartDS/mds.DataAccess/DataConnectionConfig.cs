@@ -19,5 +19,7 @@ namespace mds.DataAccess
         {
             get { return ConfigurationManager.ConnectionStrings["socialsite"].ToString(); }
         }
+
+        public string userservice { get { return ConfigurationManager.ConnectionStrings["userservice"].ToString(); } }
     }
 }

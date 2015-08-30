@@ -68,6 +68,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\usercenter.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

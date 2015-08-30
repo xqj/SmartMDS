@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Services;
+using System.Web.Services.Protocols;
 
 namespace mds.UserCenter
 {
@@ -29,13 +31,34 @@ namespace mds.UserCenter
         //    }
         //}
         [WebMethod]
-        public OperationResult<string> ThirdLogin(string loginName, string pwd)
+        public void CrossLogin(string loginName, string pwd)
         {
+            this.Context.Response.AddHeader("Access-Control-Allow-Origin", "*");
             var r = new OperationResult<string>(false);
             var tr = SecurityProvider.Instance.ThirdLogin(loginName, pwd);
             if (tr.ActionResult)
             {
-                r.Data= CurrentUser.SetSession(tr.Data);
+                r.Data = CurrentUser.SetSession(tr.Data);
+                r.ActionResult = string.IsNullOrEmpty(r.Data) ? false : true;
+            }
+            string callback = HttpContext.Current.Request["jsoncallback"];
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            string jsonObjStr = jss.Serialize(r);
+            //额外追加上的一对括号["()"]不能删除,否则不能正常得到数据,最终返回的结果
+            //结构类似于:  ?(jsonObj) ,供前台回调处理.
+            HttpContext.Current.Response.Write(callback + "(" + jsonObjStr + ")");
+            //HttpContext.Current.Response.Write(jsonObjStr);
+            HttpContext.Current.Response.End();
+        }
+        [WebMethod]
+        public OperationResult<string> ThirdLogin(string loginName, string pwd)
+        {
+            this.Context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+            var r = new OperationResult<string>(false);
+            var tr = SecurityProvider.Instance.ThirdLogin(loginName, pwd);
+            if (tr.ActionResult)
+            {
+                r.Data = CurrentUser.SetSession(tr.Data);
                 r.ActionResult = string.IsNullOrEmpty(r.Data) ? false : true;
             }
             return r;
